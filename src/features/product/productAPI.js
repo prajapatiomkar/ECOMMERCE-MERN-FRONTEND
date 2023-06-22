@@ -6,12 +6,21 @@ export function fetchAllProducts() {
     resolve({ data });
   });
 }
-export function fetchProductsByFilter(filter) {
-
+export function fetchProductsByFilter(filter, sort) {
+  // filter = { category: ["smartphone", "laptop"] };
+  // sort ={}
   // TODO on server we will support multi value
   let queryString = "";
   for (let key in filter) {
-    queryString += `${key}=${filter[key]}&`;
+    const categoryValues = filter[key];
+    if (categoryValues.length) {
+      const lastCategoryValues = categoryValues[categoryValues.length - 1];
+      queryString += `${key}=${lastCategoryValues}&`;
+    }
+  }
+
+  for (let key in sort) {
+    queryString += `${key}=${sort[key]}&`;
   }
 
   return new Promise(async (resolve) => {
