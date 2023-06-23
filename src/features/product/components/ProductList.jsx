@@ -22,13 +22,14 @@ import {
   selectAllProducts,
   fetchAllProductsAsync,
   selectTotalItems,
-  fetchProductsByFilterAsync,
   selectBrands,
   selectCategories,
   fetchCategoriesAsync,
   fetchBrandsAsync,
+  fetchProductsByFiltersAsync
 } from "../productSlice";
 
+// import  fetchProductsByFilterAsync  from "../productSlice";
 import { ITEMS, ITEMS_PER_PAGE } from "../../../app/constants";
 
 export default function ProductList() {
@@ -134,7 +135,7 @@ export default function ProductList() {
 
   useEffect(() => {
     const pagination = { _page: page, _limit: ITEMS_PER_PAGE };
-    dispatch(fetchProductsByFilterAsync({ filter, sort, pagination }));
+    dispatch(fetchProductsByFiltersAsync({ filter, sort, pagination }));
   }, [dispatch, filter, sort, page]);
 
   useEffect(() => {
