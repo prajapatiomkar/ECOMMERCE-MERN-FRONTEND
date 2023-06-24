@@ -1,6 +1,6 @@
 import React from "react";
 
-import SignUp from "../features/auth/components/SignUp";
+import SignUp from "../features/auth/components/Signup";
 
 export default function SignupPage() {
   return <SignUp />;
